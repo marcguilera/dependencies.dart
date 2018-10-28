@@ -1,0 +1,14 @@
+name: dependencies
+description: A simple dependency injection system.
+version: 0.0.1
+homepage: https://github.com/marcguilera/dart_dependencies
+author: marcguilera <marcguilerap@gmail.com>
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+dependencies:
+  validate: ^1.7.0
+
+dev_dependencies:
+  test: ^1.0.0
