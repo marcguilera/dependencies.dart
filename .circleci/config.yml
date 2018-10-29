@@ -5,10 +5,9 @@ jobs:
     - image: google/dart
     steps:
     - checkout
-    - run: pub get
-    - run: pub run test
+    - run: pub get && pub run test
 workflows:
   version: 2
-  build_and_test:
+  test:
     jobs:
-    - test:
+    - test
