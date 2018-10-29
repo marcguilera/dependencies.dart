@@ -1,17 +1,19 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _LazySingletonRegistration<T> implements _Registration<T> {
-  T _instance;
-  final ObjectFactory<T> _factory;
-
-  _LazySingletonRegistration(this._factory);
+class _LazySingletonRegistration<T> extends _Registration<T> {
+  T instance;
+  final ObjectFactory<T> factory;
 
   @override
-  T instance(Injector injector, Map params) {
-    if (_instance == null) {
-      _instance = _factory(injector, params);
-    }
-    return _instance;
-  }
+  bool get isSingleton => true;
 
+  _LazySingletonRegistration(this.factory, String name): super(name);
+
+  @override
+  T getInstance(Injector injector, Map<String, dynamic> params) {
+    if (instance == null) {
+      instance = factory(injector, params);
+    }
+    return instance;
+  }
 }

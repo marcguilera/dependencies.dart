@@ -1,25 +1,24 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _InjectorContainer implements Injector {
+class _InjectorContainer extends _InjectorBase {
+
 
   final _RegistrationContainer container;
 
-  _InjectorContainer(this.container);
+  @override
+  Iterable<_Registration> get bindings => container.registrations.values;
+
+  _InjectorContainer(this.container, {String name}):
+        super(name: name);
 
   @override
   bool contains<T>({String name}) {
-    return container.contains<T>(name);
+    return container.contains(T, name);
   }
 
   @override
-  T get<T>({String name, Map params}) {
-    final registration = container.get<T>(name);
-    return registration.instance(this, params);
-  }
-
-  @override
-  void dispose() {
-    container.clear();
+  _Registration getRegistration<T>(String name) {
+    return container.get(T, name);
   }
 
 }

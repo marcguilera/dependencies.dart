@@ -1,12 +1,15 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _SingletonRegistration<T> implements _Registration<T> {
-  final T _instance;
+class _SingletonRegistration<T> extends _Registration<T> {
+  @override
+  bool get isSingleton => true;
 
-  _SingletonRegistration(this._instance);
+  final T instance;
+
+  _SingletonRegistration(this.instance, String name): super(name);
 
   @override
-  T instance(Injector injector, Map params) {
-    return _instance;
+  T getInstance(Injector injector, Map<String, dynamic> params) {
+    return instance;
   }
 }

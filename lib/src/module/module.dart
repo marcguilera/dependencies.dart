@@ -6,7 +6,33 @@ part of 'package:dependencies/dependencies.dart';
 abstract class Module {
 
   /**
-   * Used to configure all the dependencies for this module.
+   * The name of this [Module].
+   */
+  String get name => runtimeType.toString();
+
+  /**
+   * Prevent instantiating a [Module] directly.
+   */
+  Module._internal();
+
+  /**
+   * Creates a [Module] resulting in the merge of the given modules.
+   * You can also compose modules using [Binder.install] in your [Module.configure].
+   */
+  factory Module.compose(Iterable<Module> modules) {
+    notNull(modules, message: () => "modules can't be null");
+    return _ComposeModule(modules);
+  }
+
+  /**
+   * Creates an empty [Module].
+   */
+  factory Module.empty() {
+    return _EmptyModule();
+  }
+
+  /**
+   * Used to configure all the dependencies for this [Module].
    */
   void configure(Binder binder);
 }

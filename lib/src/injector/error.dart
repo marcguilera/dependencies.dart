@@ -1,11 +1,14 @@
 part of 'package:dependencies/dependencies.dart';
 
-class InjectionError extends StateError {
-  InjectionError._internal(String message) : super(message);
+class InjectionException implements Exception {
+
+  final String message;
+
+  InjectionException._internal(this.message);
 
   @override
   String toString() {
-    return "InjectionError: $message";
+    return "InjectionException: $message";
   }
 
 }
