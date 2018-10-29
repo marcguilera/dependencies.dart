@@ -3,7 +3,7 @@ part of 'package:dependencies/dependencies.dart';
 class _InjectorRegistryContainer extends Object
     with _OverrideMixin
     implements InjectorRegistry {
-  final Map<String, Injector> _map = const {};
+  final Map<String, Injector> _map = {};
 
   @override
   Injector get({String name}) {
