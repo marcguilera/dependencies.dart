@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/marcguilera/dart_dependencies.svg?style=svg)](https://circleci.com/gh/marcguilera/dart_dependencies)
+[![pub package](https://img.shields.io/pub/v/dependencies.svg)](https://pub.dartlang.org/packages/dependencies)
+
 This is a simple and flexible dependency injection container for dart. It doesn't use reflection so it will work in Flutter.
 
 ## Features
@@ -16,7 +19,7 @@ This is a simple and flexible dependency injection container for dart. It doesn'
 Optionally create a module.
 
 ```dart
-class PlayerModule implements Module {
+class PlayerModule extends Module {
   @override
   void configure(Binder binder) {
     binder
@@ -48,4 +51,17 @@ Get instances from the container.
 final Player player = injector.get(params: {"playerId":1});
 final Rest rest = injector.get();
 final String apiKey = injector.get(name: "api_key");
+```
+
+Optionally you can manage injectors with the registry. Feel free to create your own or use the singleton.
+
+```dart
+InjectorRegistry.instance.register(injector);
+```
+
+Injectors can be fetched from the registry.
+
+```dart
+final injector = InjectorRegistry.instance.get();
+final namedInjector = InjectorRegistry.instance.get(name: "named_injector");
 ```
