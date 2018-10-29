@@ -1,6 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
-abstract class OverrideMixin {
+abstract class _OverrideMixin {
 
   bool allowOverrides = false;
 

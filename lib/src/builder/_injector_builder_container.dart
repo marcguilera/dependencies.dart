@@ -1,19 +1,18 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _InjectorBuilderContainer extends _BinderContainer with NameMixin implements InjectorBuilder {
+class _InjectorBuilderContainer extends _BinderContainer with _NameMixin implements InjectorBuilder {
 
   @override
   InjectorBuilder child() {
-    return clone();
+    return _clone();
   }
 
   @override
   Injector build() {
-    return _InjectorContainer(clone(), name: name);
+    return _InjectorContainer(_clone(), name: name);
   }
 
-  @override
-  _InjectorBuilderContainer clone() {
+  _InjectorBuilderContainer _clone() {
     return _InjectorBuilderContainer()
         ..name = name
         ..allowOverrides = allowOverrides

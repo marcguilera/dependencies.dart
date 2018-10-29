@@ -4,44 +4,51 @@ class _BinderContainer extends _RegistrationContainer implements Binder {
 
   @override
   _Registration<T> bindFactory<T>(ObjectFactory<T> factory, {String name, bool override}) {
-    notNull(factory, message: () => "Factory can't be null");
+    checkNotNull(factory, message: () => "Factory can't be null");
     final registration = _FactoryRegistration(factory, name);
-    put(T, name, registration, override: override);
-    return registration;
+    return put(T, name, registration, override: override);
   }
 
   @override
   _Registration<T> bindLazySingleton<T>(ObjectFactory<T> factory, {String name, bool override}) {
-    notNull(factory, message: () => "Factory can't be null");
+    checkNotNull(factory, message: () => "Factory can't be null");
     final registration = _LazySingletonRegistration(factory, name);
-    put(T, name, registration, override: override);
-    return registration;
+    return put(T, name, registration, override: override);
   }
 
   @override
   _Registration<T> bindSingleton<T>(T instance, {String name, bool override}) {
-    notNull(instance, message: () => "Singleton can't be null");
+    checkNotNull(instance, message: () => "Singleton can't be null");
     final registration = _SingletonRegistration(instance, name);
-    put(T, name, registration, override: override);
-    return registration;
+    return put(T, name, registration, override: override);
   }
 
   @override
   Iterable<_Registration> install(Module module) {
-    notNull(module, message: () => "Module can't be null");
+    checkNotNull(module, message: () => "module can't be null");
 
-    final before = registrations.values.toSet();
+    final binder = _newModuleBinder();
 
     try {
-      module.configure(this);
-    } on InjectionException catch(e) {
-      throw InjectionException._internal("Module installation failed with reason: ${e.message}");
+      module.configure(binder);
+    } catch(e) {
+      throw InjectionException._internal("Module installation failed with reason: $e");
     }
 
-    return registrations.values.toSet().difference(before);
+    return binder.registrations.values;
+  }
 
+  @override
+  Iterable<Binding> installAll(Iterable<Module> modules) {
+    checkNotNull(modules, message: () => "modules can't be null");
+
+    final module = Module.compose(modules);
+    return install(module);
   }
 
 
+  _ModuleBinderContainer _newModuleBinder() {
+    return _ModuleBinderContainer(this);
+  }
 
 }

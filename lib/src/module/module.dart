@@ -11,16 +11,16 @@ abstract class Module {
   String get name => runtimeType.toString();
 
   /**
-   * Prevent instantiating a [Module] directly.
+   * For subclasses.
    */
-  Module._internal();
+  Module();
 
   /**
    * Creates a [Module] resulting in the merge of the given modules.
    * You can also compose modules using [Binder.install] in your [Module.configure].
    */
   factory Module.compose(Iterable<Module> modules) {
-    notNull(modules, message: () => "modules can't be null");
+    checkNotNull(modules, message: () => "modules can't be null");
     return _ComposeModule(modules);
   }
 

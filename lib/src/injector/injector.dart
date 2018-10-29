@@ -1,6 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
-String _nameOrDefault(String name) => name ?? Injector.defaultName;
+String _nameOrDefault(String name) => name ?? "injector";
 
 /**
  * Dependency injection container.
@@ -17,11 +17,6 @@ abstract class Injector {
    * to this [Injector].
    */
   Iterable<Binding> get bindings;
-
-  /**
-   * Default injector name if none is provided.
-   */
-  static final String defaultName = "default_injector";
 
   /**
    * Gets a dependency from the container with optional [name] and [params].

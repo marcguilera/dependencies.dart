@@ -1,6 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _ComposeModule extends Module {
+class _ComposeModule implements Module {
 
   @override
   final String name;
@@ -8,8 +8,7 @@ class _ComposeModule extends Module {
 
   _ComposeModule(Iterable<Module> modules):
         _modules = modules,
-        name = "ComposeModule[${modules.map((module) => module.name).join(",")}]",
-        super._internal();
+        name = "ComposeModule[${modules.map((module) => module.name).join(",")}]";
 
   @override
   void configure(Binder binder) {

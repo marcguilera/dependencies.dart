@@ -8,14 +8,13 @@ abstract class InjectorRegistry {
   /**
    * Gets the singleton instance.
    */
-  static InjectorRegistry get instance => _InjectorRegistryContainer.instance;
+  static final InjectorRegistry instance = InjectorRegistry();
 
   /**
-   * Allows to use the new syntax but will always
-   * return the same instance for the [InjectorRegistry].
-   * Equivalent to calling [InjectorRegistry.instance].
+   * Creates a new [InjectorRegistry] to keep track of different named [Injector].
+   * To use a singleton call [InjectorRegistry.instance].
    */
-  factory InjectorRegistry() => instance;
+  factory InjectorRegistry() => _InjectorRegistryContainer();
 
   /**
    * Enables overriding of [Injector] instances.

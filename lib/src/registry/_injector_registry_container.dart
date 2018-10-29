@@ -1,8 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _InjectorRegistryContainer extends Object with OverrideMixin implements InjectorRegistry {
-
-  static final _InjectorRegistryContainer instance = _InjectorRegistryContainer();
+class _InjectorRegistryContainer extends Object with _OverrideMixin implements InjectorRegistry {
 
   final Map<String, Injector> _map = const {};
 
@@ -17,7 +15,7 @@ class _InjectorRegistryContainer extends Object with OverrideMixin implements In
 
   @override
   void register(Injector injector, {bool override}) {
-    notNull(injector, message: () => "injector can't be null");
+    checkNotNull(injector, message: () => "injector can't be null");
 
     final name = injector.name;
 
@@ -30,7 +28,7 @@ class _InjectorRegistryContainer extends Object with OverrideMixin implements In
 
   @override
   void registerAll(Iterable<Injector> injectors, {bool override}) {
-    notNull(injectors, message: () => "injectors can't be null");
+    checkNotNull(injectors, message: () => "injectors can't be null");
     injectors.forEach((injector) => register(injector, override: override));
   }
 

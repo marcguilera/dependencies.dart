@@ -14,12 +14,8 @@ abstract class _InjectorBase implements Injector {
 
   @override
   Optional<T> getOptional<T>({String name, Map<String, dynamic> params}) {
-
-    if (!contains<T>(name: name)) {
-      return Optional.empty();
-    }
-
-    return Optional.of(get<T>(name: name, params: params));
+    final item = contains<T>(name: name) ? get<T>(name: name, params: params) : null;
+    return Optional.fromNullable(item);
   }
 
   _Registration getRegistration<T>(String name);

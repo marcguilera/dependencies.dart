@@ -1,8 +1,9 @@
 /// Dependency injection container for dart.
 library dependencies;
 
-import 'package:validate/expect.dart';
-import 'package:optional/optional.dart';
+import 'package:quiver/check.dart';
+import 'package:quiver/core.dart';
+import 'package:quiver/collection.dart';
 
 part 'src/injector/injector.dart';
 part 'src/injector/_injector_container.dart';
@@ -13,6 +14,7 @@ part 'src/builder/injector_builder.dart';
 part 'src/builder/_injector_builder_container.dart';
 
 part 'src/binding/binder.dart';
+part 'src/binding/_module_installer.dart';
 part 'src/binding/_binder_container.dart';
 part 'src/binding/binding.dart';
 
@@ -29,5 +31,5 @@ part 'src/registration/_singleton.dart';
 part 'src/registry/injector_registry.dart';
 part 'src/registry/_injector_registry_container.dart';
 
-part 'src/shared/override_mixin.dart';
-part 'src/shared/name_mixin.dart';
+part 'src/shared/_override_mixin.dart';
+part 'src/shared/_name_mixin.dart';

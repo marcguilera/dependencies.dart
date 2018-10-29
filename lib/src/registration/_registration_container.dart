@@ -1,23 +1,22 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _RegistrationContainer extends OverrideMixin {
+class _RegistrationContainer extends Object with _OverrideMixin {
 
-  final Map<String, _Registration> registrations = const {};
+  final Map<String, _Registration> registrations = {};
 
-  void put(Type type, String name, _Registration registration, {bool override}) {
+  _Registration put(Type type, String name, _Registration registration, {bool override}) {
     final key = _getKey(type, name);
 
     final contains = registrations.containsKey(key);
     if (contains && !shouldOverride(override)) {
       throw InjectionException._internal("Can't register with existing key `$key");
     }
-
-    registrations[key] = registration;
+    return registrations[key] = registration;
   }
 
   _Registration get(Type type, String name) {
     final key = _getKey(type, name);
-    if (registrations.containsKey(key)) {
+    if (!registrations.containsKey(key)) {
       throw InjectionException._internal("Can't get unregistered key `$key`");
     }
     return registrations[key];
@@ -28,14 +27,8 @@ class _RegistrationContainer extends OverrideMixin {
     return registrations.containsKey(key);
   }
 
-  _RegistrationContainer clone() {
-    return _RegistrationContainer()
-        ..registrations.addAll(registrations)
-        ..allowOverrides = allowOverrides;
-  }
-
   String _getKey(Type type, String name) {
-    return "type: ${type} name: ${name ?? "NO_NAME"}";
+    return "type:${type}_name:${name ?? "default"}";
   }
 
 }
