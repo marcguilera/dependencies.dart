@@ -4,7 +4,6 @@ part of 'package:dependencies/dependencies.dart';
  * Dependency injection container static factory.
  */
 abstract class InjectorRegistry {
-
   /**
    * Gets the singleton instance.
    */

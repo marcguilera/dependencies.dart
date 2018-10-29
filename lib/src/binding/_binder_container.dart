@@ -1,16 +1,17 @@
 part of 'package:dependencies/dependencies.dart';
 
 class _BinderContainer extends _RegistrationContainer implements Binder {
-
   @override
-  _Registration<T> bindFactory<T>(ObjectFactory<T> factory, {String name, bool override}) {
+  _Registration<T> bindFactory<T>(ObjectFactory<T> factory,
+      {String name, bool override}) {
     checkNotNull(factory, message: () => "Factory can't be null");
     final registration = _FactoryRegistration(factory, name);
     return put(T, name, registration, override: override);
   }
 
   @override
-  _Registration<T> bindLazySingleton<T>(ObjectFactory<T> factory, {String name, bool override}) {
+  _Registration<T> bindLazySingleton<T>(ObjectFactory<T> factory,
+      {String name, bool override}) {
     checkNotNull(factory, message: () => "Factory can't be null");
     final registration = _LazySingletonRegistration(factory, name);
     return put(T, name, registration, override: override);
@@ -31,8 +32,9 @@ class _BinderContainer extends _RegistrationContainer implements Binder {
 
     try {
       module.configure(binder);
-    } catch(e) {
-      throw InjectionException._internal("Module installation failed with reason: $e");
+    } catch (e) {
+      throw InjectionException._internal(
+          "Module installation failed with reason: $e");
     }
 
     return binder.registrations.values;
@@ -46,9 +48,7 @@ class _BinderContainer extends _RegistrationContainer implements Binder {
     return install(module);
   }
 
-
   _ModuleBinderContainer _newModuleBinder() {
     return _ModuleBinderContainer(this);
   }
-
 }

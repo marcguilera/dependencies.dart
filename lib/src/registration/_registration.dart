@@ -1,7 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
 abstract class _Registration<T> extends Binding<T> {
-
   @override
   Type get type => T;
   @override
@@ -10,5 +9,4 @@ abstract class _Registration<T> extends Binding<T> {
   _Registration(this.name);
 
   T getInstance(Injector injector, Map<String, dynamic> params);
-
 }

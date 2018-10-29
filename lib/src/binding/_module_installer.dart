@@ -1,7 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
 class _ModuleBinderContainer extends _BinderContainer {
-
   final _BinderContainer _wrapped;
 
   _ModuleBinderContainer(this._wrapped);
@@ -12,7 +11,8 @@ class _ModuleBinderContainer extends _BinderContainer {
   }
 
   @override
-  _Registration put(Type type, String name, _Registration registration, {bool override}) {
+  _Registration put(Type type, String name, _Registration registration,
+      {bool override}) {
     super.put(type, name, registration, override: override);
     return _wrapped.put(type, name, registration, override: override);
   }
@@ -26,5 +26,4 @@ class _ModuleBinderContainer extends _BinderContainer {
   _Registration get(Type type, String name) {
     return _wrapped.get(type, name);
   }
-
 }

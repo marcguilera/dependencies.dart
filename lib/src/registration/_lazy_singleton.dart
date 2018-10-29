@@ -7,7 +7,7 @@ class _LazySingletonRegistration<T> extends _Registration<T> {
   @override
   bool get isSingleton => true;
 
-  _LazySingletonRegistration(this.factory, String name): super(name);
+  _LazySingletonRegistration(this.factory, String name) : super(name);
 
   @override
   T getInstance(Injector injector, Map<String, dynamic> params) {

@@ -23,10 +23,10 @@ abstract class Binding<T> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is _Registration &&
-              runtimeType == other.runtimeType &&
-              name == other.name &&
-              type == other.type;
+      other is _Registration &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          type == other.type;
 
   @override
   int get hashCode => "${name}:${type}".hashCode;

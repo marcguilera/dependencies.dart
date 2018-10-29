@@ -10,7 +10,6 @@ typedef T ObjectFactory<T>(Injector injector, Map<String, dynamic> params);
  * container.
  */
 abstract class Binder {
-
   /**
    * Call this if this [Binder] should override registrations instead of throwing.
    */
@@ -19,7 +18,8 @@ abstract class Binder {
   /**
    * Binds a factory which will create a new instance every time.
    */
-  Binding<T> bindFactory<T>(ObjectFactory<T> factory, {String name, bool override});
+  Binding<T> bindFactory<T>(ObjectFactory<T> factory,
+      {String name, bool override});
 
   /**
    * Binds an instance.
@@ -29,7 +29,8 @@ abstract class Binder {
   /**
    * Binds a lazy loaded singleton.
    */
-  Binding<T> bindLazySingleton<T>(ObjectFactory<T> factory, {String name, bool override});
+  Binding<T> bindLazySingleton<T>(ObjectFactory<T> factory,
+      {String name, bool override});
 
   /**
    * Installs all the dependencies from the given [Module].

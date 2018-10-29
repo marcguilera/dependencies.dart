@@ -4,7 +4,6 @@ part of 'package:dependencies/dependencies.dart';
  * Builder to create [Injector] instances.
  */
 abstract class InjectorBuilder implements Binder {
-
   factory InjectorBuilder._internal() {
     return _InjectorBuilderContainer();
   }
@@ -25,5 +24,4 @@ abstract class InjectorBuilder implements Binder {
    * binded to this [InjectorBuilder] won't make it to the [Injector].
    */
   Injector build();
-
 }

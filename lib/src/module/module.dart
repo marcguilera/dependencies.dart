@@ -4,7 +4,6 @@ part of 'package:dependencies/dependencies.dart';
  * A module to configure injection bindings.
  */
 abstract class Module {
-
   /**
    * The name of this [Module].
    */

@@ -6,7 +6,6 @@ String _nameOrDefault(String name) => name ?? "injector";
  * Dependency injection container.
  */
 abstract class Injector {
-
   /**
    * The name of the injector.
    */
@@ -39,5 +38,4 @@ abstract class Injector {
   static InjectorBuilder builder() {
     return InjectorBuilder._internal();
   }
-
 }
