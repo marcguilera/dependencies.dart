@@ -1,7 +1,7 @@
 [![CircleCI](https://circleci.com/gh/marcguilera/dart_dependencies.svg?style=svg)](https://circleci.com/gh/marcguilera/dart_dependencies)
 [![pub package](https://img.shields.io/pub/v/dependencies.svg)](https://pub.dartlang.org/packages/dependencies)
 
-This is a simple and flexible dependency injection container for dart. It doesn't use reflection so it will work in Flutter.
+This is a simple and flexible dependency injection container for dart. It doesn't use reflection so it will work in [Flutter](https://pub.dartlang.org/packages/dependencies_flutter).
 
 ## Features
 
@@ -11,6 +11,7 @@ This is a simple and flexible dependency injection container for dart. It doesn'
 - **Factories:** Bind factories.
 - **Named dependencies:** Give your dependencies custom names.
 - **Extra arguments:** Pass arguments to your factory methods.
+- **Works with Flutter:** Since it doesn't use reflexion it works with Flutter. 
 
 ## Usage
 
