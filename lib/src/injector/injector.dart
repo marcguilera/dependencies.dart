@@ -12,7 +12,7 @@ abstract class Injector {
   String get name;
 
   /**
-   * Gets a list of all the [Binding] instances atacched
+   * Gets a list of all the [Binding] instances atached
    * to this [Injector].
    */
   Iterable<Binding> get bindings;
@@ -36,6 +36,6 @@ abstract class Injector {
    * Creates a [InjectorBuilder] to create [Injector] instances.
    */
   static InjectorBuilder builder() {
-    return InjectorBuilder._internal();
+    return InjectorBuilder();
   }
 }

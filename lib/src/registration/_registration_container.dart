@@ -3,7 +3,7 @@ part of 'package:dependencies/dependencies.dart';
 class _RegistrationContainer extends Object with _OverrideMixin {
   final Map<String, _Registration> registrations = {};
 
-  _Registration put(Type type, String name, _Registration registration,
+  void put(Type type, String name, _Registration registration,
       {bool override}) {
     final key = _getKey(type, name);
 
@@ -12,7 +12,7 @@ class _RegistrationContainer extends Object with _OverrideMixin {
       throw InjectionException._internal(
           "Can't register with existing key `$key");
     }
-    return registrations[key] = registration;
+    registrations[key] = registration;
   }
 
   _Registration get(Type type, String name) {
@@ -26,6 +26,10 @@ class _RegistrationContainer extends Object with _OverrideMixin {
   bool contains(Type type, String name) {
     final key = _getKey(type, name);
     return registrations.containsKey(key);
+  }
+
+  void clear() {
+    registrations.clear();
   }
 
   String _getKey(Type type, String name) {

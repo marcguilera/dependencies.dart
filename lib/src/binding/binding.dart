@@ -6,11 +6,6 @@ part of 'package:dependencies/dependencies.dart';
  */
 abstract class Binding<T> {
   /**
-   * Whether the binding is a singleton.
-   */
-  bool get isSingleton => true;
-
-  /**
    * The time of this [Binding]
    */
   Type get type;
@@ -19,15 +14,45 @@ abstract class Binding<T> {
    * The name of this [Binding] or `null`.
    */
   String get name;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is _Registration &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          type == other.type;
-
-  @override
-  int get hashCode => "${name}:${type}".hashCode;
 }
+
+/**
+ * Represents a [Binding] containing an instance.
+ */
+abstract class InstanceBinding<T> implements Binding<T> {
+  /**
+   * Gets the underlying instance.
+   */
+  T get instance;
+}
+
+/**
+ * Represents a [Binding] containing an object factory.
+ */
+abstract class ObjectFactoryBinding<T> implements Binding<T> {
+  /**
+   * Gets the binded factory.
+   */
+  ObjectFactory<T> get factory;
+}
+
+/**
+ * Represents a Singleton [Binding]
+ */
+abstract class SingletonBinding<T> implements InstanceBinding<T> {}
+
+/**
+ * Represents a lazy singleton [Binding].
+ */
+abstract class LazySingletonBinding<T>
+    implements InstanceBinding<T>, ObjectFactoryBinding<T> {
+  /**
+   * Whether the instance has been evaluated.
+   */
+  bool get isInstantiated;
+}
+
+/**
+ * Represents a factory [Binding]
+ */
+abstract class FactoryBinding<T> implements ObjectFactoryBinding<T> {}

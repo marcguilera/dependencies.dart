@@ -11,10 +11,10 @@ class _ModuleBinderContainer extends _BinderContainer {
   }
 
   @override
-  _Registration put(Type type, String name, _Registration registration,
+  void put(Type type, String name, _Registration registration,
       {bool override}) {
     super.put(type, name, registration, override: override);
-    return _wrapped.put(type, name, registration, override: override);
+    _wrapped.put(type, name, registration, override: override);
   }
 
   @override

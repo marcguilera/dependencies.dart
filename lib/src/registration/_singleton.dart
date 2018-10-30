@@ -1,9 +1,8 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _SingletonRegistration<T> extends _Registration<T> {
+class _SingletonRegistration<T> extends _Registration<T>
+    implements SingletonBinding<T> {
   @override
-  bool get isSingleton => true;
-
   final T instance;
 
   _SingletonRegistration(this.instance, String name) : super(name);

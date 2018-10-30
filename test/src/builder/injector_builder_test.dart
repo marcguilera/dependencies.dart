@@ -36,13 +36,6 @@ void main() {
     expect(injector.contains<Object>(), isTrue);
   });
 
-  test("installing all modules adds all dependencies", () {
-    final injector = _newInjector(
-        (builder) => builder.installAll([_MyModule(), _MyModule2()]));
-    expect(injector.contains<Object>(), isTrue);
-    expect(injector.contains<String>(), isTrue);
-  });
-
   test("binding named dependency should return the dependency", () {
     const name = "object";
     final injector =
@@ -51,32 +44,35 @@ void main() {
   });
 
   test("binding two dependencies with the same id should throw", () {
-    final builder = Injector.builder();
-    builder.bindSingleton(Object());
-    expect(() => builder.bindSingleton(Object()), throwsException);
+    _newInjector((builder) {
+      builder.bindSingleton(Object());
+      expect(() => builder.bindSingleton(Object()), throwsException);
+    });
   });
 
   test(
       "binding two dependencies with the same id and overriding enabled shouldn't throw",
       () {
-    final builder = Injector.builder();
-    builder.enableOverriding();
-    expect(() => builder.bindSingleton(Object()), isNot(throwsException));
+    _newInjector((builder) {
+      builder.enableOverriding();
+      expect(() => builder.bindSingleton(Object()), isNot(throwsException));
+    });
   });
 
   test(
       "binding two dependencies with the same id and override = true doesn't throw",
       () {
-    final builder = Injector.builder();
-    expect(() => builder.bindSingleton(Object(), override: true),
-        isNot(throwsException));
+    _newInjector((builder) {
+      expect(() => builder.bindSingleton(Object(), override: true),
+          isNot(throwsException));
+    });
   });
 }
 
 typedef void _BuilderFunc(InjectorBuilder builder);
 
 Injector _newInjector([_BuilderFunc func]) {
-  final builder = Injector.builder();
+  final builder = InjectorBuilder();
   if (func != null) func(builder);
   return builder.build();
 }

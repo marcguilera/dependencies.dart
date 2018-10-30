@@ -18,27 +18,23 @@ abstract class Binder {
   /**
    * Binds a factory which will create a new instance every time.
    */
-  Binding<T> bindFactory<T>(ObjectFactory<T> factory,
+  FactoryBinding<T> bindFactory<T>(ObjectFactory<T> factory,
       {String name, bool override});
 
   /**
    * Binds an instance.
    */
-  Binding<T> bindSingleton<T>(T instance, {String name, bool override});
+  SingletonBinding<T> bindSingleton<T>(T instance,
+      {String name, bool override});
 
   /**
    * Binds a lazy loaded singleton.
    */
-  Binding<T> bindLazySingleton<T>(ObjectFactory<T> factory,
+  LazySingletonBinding<T> bindLazySingleton<T>(ObjectFactory<T> factory,
       {String name, bool override});
 
   /**
    * Installs all the dependencies from the given [Module].
    */
   Iterable<Binding> install(Module module);
-
-  /**
-   * Installs many modules.
-   */
-  Iterable<Binding> installAll(Iterable<Module> modules);
 }

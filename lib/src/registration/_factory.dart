@@ -1,9 +1,8 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _FactoryRegistration<T> extends _Registration<T> {
+class _FactoryRegistration<T> extends _Registration<T>
+    implements FactoryBinding<T> {
   @override
-  bool get isSingleton => false;
-
   final ObjectFactory<T> factory;
 
   _FactoryRegistration(this.factory, String name) : super(name);
