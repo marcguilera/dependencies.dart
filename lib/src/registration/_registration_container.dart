@@ -1,6 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _RegistrationContainer extends Object with _OverrideMixin {
+class _RegistrationContainer {
   final Map<String, _Registration> registrations = {};
 
   void put(Type type, String name, _Registration registration,
@@ -8,7 +8,8 @@ class _RegistrationContainer extends Object with _OverrideMixin {
     final key = _getKey(type, name);
 
     final contains = registrations.containsKey(key);
-    if (contains && !shouldOverride(override)) {
+    final isOverrideEnabled = override ?? false;
+    if (contains && !isOverrideEnabled) {
       throw InjectionException._internal(
           "Can't register with existing key `$key");
     }

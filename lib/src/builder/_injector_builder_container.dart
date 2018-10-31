@@ -1,8 +1,15 @@
 part of 'package:dependencies/dependencies.dart';
 
 class _InjectorBuilderContainer extends _BinderContainer
-    with _NameMixin
     implements InjectorBuilder {
+  String name;
+
+  void setName(String name) {
+    checkArgument(name != null && name.isNotEmpty,
+        message: () => "name can't be null");
+    this.name = name;
+  }
+
   @override
   InjectorBuilder child() {
     return _clone();
@@ -16,7 +23,6 @@ class _InjectorBuilderContainer extends _BinderContainer
   _InjectorBuilderContainer _clone() {
     return _InjectorBuilderContainer()
       ..name = name
-      ..allowOverrides = allowOverrides
       ..registrations.addAll(registrations);
   }
 }

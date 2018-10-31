@@ -1,14 +1,9 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _ModuleBinderContainer extends _BinderContainer {
+class _ConfigurerBinderContainer extends _BinderContainer {
   final _BinderContainer _wrapped;
 
-  _ModuleBinderContainer(this._wrapped);
-
-  @override
-  void enableOverriding() {
-    _wrapped.enableOverriding();
-  }
+  _ConfigurerBinderContainer(this._wrapped);
 
   @override
   void put(Type type, String name, _Registration registration,

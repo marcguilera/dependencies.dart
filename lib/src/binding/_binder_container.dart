@@ -29,16 +29,16 @@ class _BinderContainer extends _RegistrationContainer implements Binder {
   }
 
   @override
-  Iterable<_Registration> install(Module module) {
-    checkNotNull(module, message: () => "module can't be null");
+  Iterable<_Registration> install(Configurer configurer) {
+    checkNotNull(configurer, message: () => "configurer can't be null");
 
-    final binder = _ModuleBinderContainer(this);
+    final binder = _ConfigurerBinderContainer(this);
 
     try {
-      module.configure(binder);
+      configurer.configure(binder);
     } catch (e) {
       throw InjectionException._internal(
-          "Module installation failed with reason: $e");
+          "Configurer installation failed with reason: $e");
     }
 
     return binder.registrations.values;

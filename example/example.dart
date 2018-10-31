@@ -19,7 +19,7 @@ void main() {
   print(rest);
 }
 
-class PlayerModule extends Module {
+class PlayerModule implements Module {
   @override
   void configure(Binder binder) {
     binder..bindFactory((i, p) => Player(p["id"]));

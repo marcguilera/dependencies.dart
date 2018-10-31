@@ -51,15 +51,6 @@ void main() {
   });
 
   test(
-      "binding two dependencies with the same id and overriding enabled shouldn't throw",
-      () {
-    _newInjector((builder) {
-      builder.enableOverriding();
-      expect(() => builder.bindSingleton(Object()), isNot(throwsException));
-    });
-  });
-
-  test(
       "binding two dependencies with the same id and override = true doesn't throw",
       () {
     _newInjector((builder) {
@@ -77,14 +68,14 @@ Injector _newInjector([_BuilderFunc func]) {
   return builder.build();
 }
 
-class _MyModule extends Module {
+class _MyModule implements Module {
   @override
   void configure(Binder binder) {
     binder..bindSingleton(Object());
   }
 }
 
-class _MyModule2 extends Module {
+class _MyModule2 implements Module {
   @override
   void configure(Binder binder) {
     binder..bindSingleton("key");

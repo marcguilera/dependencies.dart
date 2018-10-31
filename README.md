@@ -1,7 +1,9 @@
 [![CircleCI](https://circleci.com/gh/marcguilera/dart_dependencies.svg?style=svg)](https://circleci.com/gh/marcguilera/dart_dependencies)
 [![pub package](https://img.shields.io/pub/v/dependencies.svg)](https://pub.dartlang.org/packages/dependencies)
 
-This is a simple and flexible dependency injection container for dart. It doesn't use reflection so it will work in [Flutter](https://pub.dartlang.org/packages/dependencies_flutter).
+This is a simple and flexible dependency injection container for dart. 
+
+If you are using Flutter consider the [dependencies_flutter](https://pub.dartlang.org/packages/dependencies_flutter) package.
 
 ## Features
 

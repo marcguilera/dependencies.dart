@@ -1,8 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _InjectorRegistryContainer extends Object
-    with _OverrideMixin
-    implements InjectorRegistry {
+class _InjectorRegistryContainer implements InjectorRegistry {
   final Map<String, Injector> _map = {};
 
   @override
@@ -21,7 +19,7 @@ class _InjectorRegistryContainer extends Object
 
     final name = injector.name;
 
-    if (_map.containsKey(name) && !shouldOverride(override)) {
+    if (_map.containsKey(name) && !override) {
       throw InjectionException._internal(
           "Injector with name `$name` already exists");
     }

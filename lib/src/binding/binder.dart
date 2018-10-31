@@ -3,12 +3,12 @@ part of 'package:dependencies/dependencies.dart';
 /// Represents a factory able to create instances of type [T].
 typedef T ObjectFactory<T>(Injector injector, Map<String, dynamic> params);
 
+/// A function used to add the bindings to an [Injector].
+typedef void BindFunc(Binder binder);
+
 /// Represents an object able to bind instances to the dependency injection
 /// container.
-abstract class Binder {
-  /// Call this if this [Binder] should override registrations instead of throwing.
-  void enableOverriding();
-
+abstract class Binder implements Installer {
   /// Binds a factory which will create a new instance every time.
   FactoryBinding<T> bindFactory<T>(ObjectFactory<T> factory,
       {String name, bool override});
@@ -20,7 +20,4 @@ abstract class Binder {
   /// Binds a lazy loaded singleton.
   LazySingletonBinding<T> bindLazySingleton<T>(ObjectFactory<T> factory,
       {String name, bool override});
-
-  /// Installs all the dependencies from the given [Module].
-  Iterable<Binding> install(Module module);
 }

@@ -17,3 +17,7 @@
 - Added shortcuts to inject through the `InjectorRegistry`.
 - Added Flutter version.
 
+## 0.0.5
+
+- Added configurer and installer.
+- Removed global allow override.
