@@ -26,3 +26,7 @@
 
 - Added disposing mechanism.
 - Stable API
+
+## 0.1.1
+
+- Added the possibility to create an injector from bindings.

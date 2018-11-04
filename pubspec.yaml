@@ -1,6 +1,6 @@
 name: dependencies
 description: A simple and modular dependency injection system without using reflection.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/marcguilera/dart_dependencies
 author: marcguilera <marcguilerap@gmail.com>
 
