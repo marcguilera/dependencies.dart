@@ -6,12 +6,12 @@ abstract class _InjectorBase implements Injector {
   _InjectorBase({String name}) : this.name = _nameOrDefault(name);
 
   @override
-  T get<T>({String name, Map<String, dynamic> params}) {
-    return getRegistration<T>(name).getInstance(this, params ?? const {});
+  T get<T>({String name, Params params}) {
+    return getRegistration<T>(name).getInstance(this, params ?? Params.empty());
   }
 
   @override
-  Optional<T> getOptional<T>({String name, Map<String, dynamic> params}) {
+  Optional<T> getOptional<T>({String name, Params params}) {
     return contains<T>(name: name)
         ? Optional.of(get<T>(name: name, params: params))
         : Optional.absent();

@@ -1,6 +1,8 @@
 part of 'package:dependencies/dependencies.dart';
 
 class _InjectorContainer extends _InjectorBase {
+  @override
+  bool get isDisposed => container.isDisposed;
   final _RegistrationContainer container;
 
   @override
@@ -16,5 +18,10 @@ class _InjectorContainer extends _InjectorBase {
   @override
   _Registration getRegistration<T>(String name) {
     return container.get(T, name);
+  }
+
+  @override
+  void dispose() {
+    container.dispose();
   }
 }

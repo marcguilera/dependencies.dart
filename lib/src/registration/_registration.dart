@@ -1,6 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
-abstract class _Registration<T> extends Binding<T> {
+abstract class _Registration<T> extends Binding<T> with DisposableMixin {
   @override
   Type get type => T;
   @override
@@ -8,7 +8,7 @@ abstract class _Registration<T> extends Binding<T> {
 
   _Registration(this.name);
 
-  T getInstance(Injector injector, Map<String, dynamic> params);
+  T getInstance(Injector injector, Params params);
 
   @override
   bool operator ==(Object other) =>

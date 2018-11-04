@@ -1,7 +1,7 @@
 part of 'package:dependencies/dependencies.dart';
 
 /// Dependency injection container static factory.
-abstract class InjectorRegistry {
+abstract class InjectorRegistry implements Disposable {
   /// Gets the singleton instance.
   static final InjectorRegistry instance = InjectorRegistry();
 
@@ -20,7 +20,4 @@ abstract class InjectorRegistry {
 
   /// Checks whether this [InjectorRegistry] contains an [Injector] instance.
   bool contains({String name});
-
-  /// Cleans up the [Injector] instances.
-  void clear();
 }

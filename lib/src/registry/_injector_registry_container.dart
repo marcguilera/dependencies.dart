@@ -1,6 +1,8 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _InjectorRegistryContainer implements InjectorRegistry {
+class _InjectorRegistryContainer extends Object
+    with DisposableMixin
+    implements InjectorRegistry {
   final Map<String, Injector> _map = {};
 
   @override
@@ -39,7 +41,8 @@ class _InjectorRegistryContainer implements InjectorRegistry {
   }
 
   @override
-  void clear() {
+  void doDispose() {
+    _map.values.forEach((injector) => injector.dispose());
     _map.clear();
   }
 }

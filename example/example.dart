@@ -9,9 +9,9 @@ void main() {
   InjectorRegistry.instance.register(builder.build());
   final injector = InjectorRegistry.instance.get();
 
-  final player1 = injector.get<Player>(params: {"id": "1"});
+  final player1 = injector.get<Player>(params: Params.fromMap({"id": "1"}));
   print(player1);
-  final player2 = injector.get<Player>(params: {"id": "2"});
+  final player2 = injector.get<Player>(params: Params.fromMap({"id": "2"}));
   print(player2);
   final key = injector.get<String>(name: "api_key");
   print(key);
@@ -22,7 +22,7 @@ void main() {
 class PlayerModule implements Module {
   @override
   void configure(Binder binder) {
-    binder..bindFactory((i, p) => Player(p["id"]));
+    binder..bindFactory((i, p) => Player(p.get("id")));
   }
 }
 

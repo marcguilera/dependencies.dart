@@ -8,7 +8,10 @@ class _FactoryRegistration<T> extends _Registration<T>
   _FactoryRegistration(this.factory, String name) : super(name);
 
   @override
-  T getInstance(Injector injector, Map<String, dynamic> params) {
+  T getInstance(Injector injector, Params params) {
     return factory(injector, params);
   }
+
+  @override
+  void doDispose() {}
 }

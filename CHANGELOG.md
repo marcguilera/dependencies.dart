@@ -21,3 +21,8 @@
 
 - Added configurer and installer.
 - Removed global allow override.
+
+## 0.1.0
+
+- Added disposing mechanism.
+- Stable API

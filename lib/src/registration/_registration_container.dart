@@ -1,6 +1,6 @@
 part of 'package:dependencies/dependencies.dart';
 
-class _RegistrationContainer {
+class _RegistrationContainer extends Object with DisposableMixin {
   final Map<String, _Registration> registrations = {};
 
   void put(Type type, String name, _Registration registration,
@@ -29,11 +29,14 @@ class _RegistrationContainer {
     return registrations.containsKey(key);
   }
 
-  void clear() {
-    registrations.clear();
-  }
-
   String _getKey(Type type, String name) {
     return "type:${type}_name:${name ?? "default"}";
+  }
+
+  @override
+  void doDispose() {
+    final values = registrations.values;
+    values.forEach((disposable) => disposable.dispose());
+    registrations.clear();
   }
 }
