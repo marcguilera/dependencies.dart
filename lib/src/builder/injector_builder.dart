@@ -2,10 +2,6 @@ part of 'package:dependencies/dependencies.dart';
 
 /// Builder to create [Injector] instances.
 abstract class InjectorBuilder implements Binder {
-  factory InjectorBuilder() {
-    return _InjectorBuilderContainer();
-  }
-
   /// Sets the name of the injector.
   void setName(String name);
 

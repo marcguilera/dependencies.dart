@@ -60,10 +60,8 @@ void main() {
   });
 }
 
-typedef void _BuilderFunc(InjectorBuilder builder);
-
-Injector _newInjector([_BuilderFunc func]) {
-  final builder = InjectorBuilder();
+Injector _newInjector([BindFunc func]) {
+  final builder = Injector.builder();
   if (func != null) func(builder);
   return builder.build();
 }

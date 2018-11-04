@@ -1,6 +1,7 @@
 /// Dependency injection container for dart.
 library dependencies;
 
+import 'package:meta/meta.dart';
 import 'package:quiver/check.dart';
 import 'package:quiver/core.dart';
 import 'package:disposables/disposables.dart';
@@ -14,6 +15,7 @@ part 'src/builder/_injector_builder_container.dart';
 part 'src/builder/injector_builder.dart';
 part 'src/injector/_injector_base.dart';
 part 'src/injector/_injector_container.dart';
+part 'src/injector/_empty_injector.dart';
 part 'src/injector/error.dart';
 part 'src/injector/injector.dart';
 part 'src/params/params.dart';

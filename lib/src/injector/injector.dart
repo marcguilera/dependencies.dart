@@ -1,8 +1,5 @@
 part of 'package:dependencies/dependencies.dart';
 
-/// A function to set up bindings.
-typedef void BinderFunc(Binder binder);
-
 String _nameOrDefault(String name) => name ?? "injector";
 
 /// Dependency injection container.
@@ -30,16 +27,34 @@ abstract class Injector implements Disposable {
   void dispose();
 
   /// Creates an [Injector] from it's bindings.
-  factory Injector(BinderFunc binderFunc, {String name}) {
-    checkNotNull(binderFunc, message: () => "binderFunc can't be null");
+  factory Injector({@required BindFunc bindFunc, String name}) {
+    checkNotNull(bindFunc, message: () => "bindFunc can't be null");
     final b = builder();
-    if (name != null) b.setName(name);
-    binderFunc(b);
+    if (name == null) b.setName(name);
+    bindFunc(b);
     return b.build();
+  }
+
+  /// Creates an empty [Injector].
+  factory Injector.empty({String name}) {
+    return _EmptyInjector();
+  }
+
+  /// Creates an [Injector] from a [Module].
+  factory Injector.fromModule({@required Module module, String name}) {
+    checkNotNull(module, message: () => "module can't be null");
+    return Injector(name: name, bindFunc: (bind) => bind.install(module));
+  }
+
+  /// Creates an [Injector] from a list of [Module] instances.
+  factory Injector.fromModules(
+      {@required Iterable<Module> modules, String name}) {
+    checkNotNull(modules, message: () => "modules can't be null");
+    return Injector.fromModule(name: name, module: Module.compose(modules));
   }
 
   /// Creates a [InjectorBuilder] to create [Injector] instances.
   static InjectorBuilder builder() {
-    return InjectorBuilder();
+    return _InjectorBuilderContainer();
   }
 }
