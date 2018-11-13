@@ -18,8 +18,8 @@ class _InjectorBuilderContainer extends _BinderContainer
   @override
   Injector build() {
     return registrations.isNotEmpty
-      ? _InjectorContainer(_clone(), name: name)
-      : _EmptyInjector(name: name);
+        ? _InjectorContainer(_clone(), name: name)
+        : _EmptyInjector(name: name);
   }
 
   _InjectorBuilderContainer _clone() {

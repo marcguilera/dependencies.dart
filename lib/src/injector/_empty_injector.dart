@@ -6,15 +6,15 @@ class _EmptyInjector extends Object with DisposableMixin implements Injector {
   @override
   final Iterable<Binding> bindings = const [];
 
-  _EmptyInjector({String name}):
-      this.name = _nameOrDefault(name);
+  _EmptyInjector({String name}) : this.name = _nameOrDefault(name);
 
   @override
   bool contains<T>({String name}) => false;
 
   @override
   T get<T>({String name, Params params}) {
-    throw InjectionException._internal("Can't get instance from empty injector");
+    throw InjectionException._internal(
+        "Can't get instance from empty injector");
   }
 
   @override
@@ -23,7 +23,5 @@ class _EmptyInjector extends Object with DisposableMixin implements Injector {
   }
 
   @override
-  void doDispose() {
-  }
-
+  void doDispose() {}
 }
