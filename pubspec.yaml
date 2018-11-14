@@ -1,7 +1,7 @@
 name: dependencies
 description: A simple and modular dependency injection system without using reflection.
-version: 0.1.3
-homepage: https://github.com/marcguilera/dart_dependencies
+version: 0.1.4
+homepage: https://github.com/marcguilera/dependencies.dart
 author: marcguilera <marcguilerap@gmail.com>
 
 environment:
@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   quiver: ^2.0.1
-  disposables: ^0.0.1
+  disposables: ^0.1.2
 
 dev_dependencies:
   test: ^1.0.0
