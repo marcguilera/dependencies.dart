@@ -1,4 +1,5 @@
-[![CircleCI](https://circleci.com/gh/marcguilera/dart_dependencies.svg?style=svg)](https://circleci.com/gh/marcguilera/dart_dependencies)
+[![Mentioned in Awesome Dart](https://awesome.re/mentioned-badge.svg)](https://github.com/yissachar/awesome-dart)
+[![CircleCI](https://circleci.com/gh/marcguilera/dependencies.dart.svg?style=svg)](https://circleci.com/gh/marcguilera/dependencies.dart)
 [![pub package](https://img.shields.io/pub/v/dependencies.svg)](https://pub.dartlang.org/packages/dependencies)
 
 This is a simple and flexible dependency injection container for dart. 
