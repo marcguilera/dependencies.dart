@@ -30,7 +30,7 @@ abstract class Injector implements Disposable {
   factory Injector({@required BindFunc bindFunc, String name}) {
     checkNotNull(bindFunc, message: () => "bindFunc can't be null");
     final b = builder();
-    if (name == null) b.setName(name);
+    if (name != null) b.setName(name);
     bindFunc(b);
     return b.build();
   }
