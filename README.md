@@ -23,7 +23,7 @@ If you are using Flutter consider the [dependencies_flutter](https://pub.dartlan
 Optionally create a module.
 
 ```dart
-class PlayerModule extends Module {
+class PlayerModule implements Module {
   @override
   void configure(Binder binder) {
     binder
