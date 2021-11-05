@@ -11,13 +11,13 @@ class _EmptyParams implements Params {
 
   @override
   T get<T>(String name) {
-    checkNotNull(name, message: () => "name can't be null");
+    ArgumentError.checkNotNull(name, "name can't be null");
     throw ParamException._internal("No param with name $name");
   }
 
   @override
   Optional<T> getOptional<T>(String name) {
-    checkNotNull(name, message: () => "name can't be null");
+    ArgumentError.checkNotNull(name, "name can't be null");
     return Optional.absent();
   }
 }

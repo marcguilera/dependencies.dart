@@ -4,7 +4,7 @@ abstract class _Registration<T> extends Binding<T> with DisposableMixin {
   @override
   Type get type => T;
   @override
-  final String name;
+  final String? name;
 
   _Registration(this.name);
 

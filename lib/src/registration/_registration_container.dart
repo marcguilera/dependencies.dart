@@ -3,8 +3,8 @@ part of 'package:dependencies/dependencies.dart';
 class _RegistrationContainer extends Object with DisposableMixin {
   final Map<String, _Registration> registrations = {};
 
-  void put(Type type, String name, _Registration registration,
-      {bool override}) {
+  void put(Type type, String? name, _Registration registration,
+      {bool? override}) {
     final key = _getKey(type, name);
 
     final contains = registrations.containsKey(key);
@@ -16,7 +16,7 @@ class _RegistrationContainer extends Object with DisposableMixin {
     registrations[key] = registration;
   }
 
-  _Registration get(Type type, String name) {
+  _Registration? get(Type type, String? name) {
     final key = _getKey(type, name);
     if (!registrations.containsKey(key)) {
       throw InjectionException._internal("Can't get unregistered key `$key`");
@@ -24,12 +24,12 @@ class _RegistrationContainer extends Object with DisposableMixin {
     return registrations[key];
   }
 
-  bool contains(Type type, String name) {
+  bool contains(Type type, String? name) {
     final key = _getKey(type, name);
     return registrations.containsKey(key);
   }
 
-  String _getKey(Type type, String name) {
+  String _getKey(Type type, String? name) {
     return "type:${type}_name:${name ?? "default"}";
   }
 

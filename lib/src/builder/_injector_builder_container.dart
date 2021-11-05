@@ -2,11 +2,9 @@ part of 'package:dependencies/dependencies.dart';
 
 class _InjectorBuilderContainer extends _BinderContainer
     implements InjectorBuilder {
-  String name;
+  String? name;
 
   void setName(String name) {
-    checkArgument(name != null && name.isNotEmpty,
-        message: () => "name can't be null");
     this.name = name;
   }
 

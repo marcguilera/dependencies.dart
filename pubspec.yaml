@@ -5,11 +5,11 @@ homepage: https://github.com/marcguilera/dependencies.dart
 author: marcguilera <marcguilerap@gmail.com>
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  quiver: ^2.0.1
-  disposables: ^0.1.2
+  quiver: ^3.0.1+1
+  disposables: ^1.0.0
 
 dev_dependencies:
-  test: ^1.0.0
+  test: ^1.19.3
