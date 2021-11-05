@@ -5,7 +5,7 @@ abstract class Module implements Configurer {
   /// Creates a [Module] resulting in the merge of the given modules.
   /// You can also compose modules using [Binder.install] in your [Module.configure].
   factory Module.compose(Iterable<Module> modules) {
-    checkNotNull(modules, message: () => "modules can't be null");
+    ArgumentError.checkNotNull(modules, "modules can't be null");
     return _ComposeModule(modules);
   }
 

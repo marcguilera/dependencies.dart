@@ -3,7 +3,7 @@ import 'package:dependencies/dependencies.dart';
 void main() {
   final builder = Injector.builder()
     ..bindSingleton("abc123", name: "api_key")
-    ..bindLazySingleton((i, p) => Rest(i.get(name: "api_key")))
+    ..bindLazySingleton((i, p) => Rest(i.get(name: "api_key")!))
     ..install(PlayerModule());
 
   InjectorRegistry.instance.register(builder.build());

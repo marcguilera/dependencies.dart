@@ -6,7 +6,7 @@ class _InjectorRegistryContainer extends Object
   final Map<String, Injector> _map = {};
 
   @override
-  Injector get({String name}) {
+  Injector get({String? name}) {
     final injector = _map[_nameOrDefault(name)];
     if (injector == null) {
       throw InjectionException._internal(
@@ -16,12 +16,12 @@ class _InjectorRegistryContainer extends Object
   }
 
   @override
-  void register(Injector injector, {bool override}) {
-    checkNotNull(injector, message: () => "injector can't be null");
+  void register(Injector injector, {bool? override}) {
+    ArgumentError.checkNotNull(injector, "injector can't be null");
 
     final name = injector.name;
 
-    if (_map.containsKey(name) && !override) {
+    if (_map.containsKey(name) && !override!) {
       throw InjectionException._internal(
           "Injector with name `$name` already exists");
     }
@@ -30,13 +30,13 @@ class _InjectorRegistryContainer extends Object
   }
 
   @override
-  void registerAll(Iterable<Injector> injectors, {bool override}) {
-    checkNotNull(injectors, message: () => "injectors can't be null");
+  void registerAll(Iterable<Injector> injectors, {bool? override}) {
+    ArgumentError.checkNotNull(injectors, "injectors can't be null");
     injectors.forEach((injector) => register(injector, override: override));
   }
 
   @override
-  bool contains({String name}) {
+  bool contains({String? name}) {
     return _map.containsKey(_nameOrDefault(name));
   }
 

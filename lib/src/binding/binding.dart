@@ -7,7 +7,7 @@ abstract class Binding<T> {
   Type get type;
 
   /// The name of this [Binding] or `null`.
-  String get name;
+  String? get name;
 }
 
 /// Represents a [Binding] containing an instance.
@@ -27,7 +27,7 @@ abstract class SingletonBinding<T> implements InstanceBinding<T> {}
 
 /// Represents a lazy singleton [Binding].
 abstract class LazySingletonBinding<T>
-    implements InstanceBinding<T>, ObjectFactoryBinding<T> {
+    implements InstanceBinding<T?>, ObjectFactoryBinding<T?> {
   /// Whether the instance has been evaluated.
   bool get isInstantiated;
 }

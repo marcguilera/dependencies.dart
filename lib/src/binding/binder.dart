@@ -11,13 +11,13 @@ typedef void BindFunc(Binder binder);
 abstract class Binder implements Installer {
   /// Binds a factory which will create a new instance every time.
   FactoryBinding<T> bindFactory<T>(ObjectFactory<T> factory,
-      {String name, bool override});
+      {String? name, bool? override});
 
   /// Binds an instance.
   SingletonBinding<T> bindSingleton<T>(T instance,
-      {String name, bool override});
+      {String? name, bool? override});
 
   /// Binds a lazy loaded singleton.
-  LazySingletonBinding<T> bindLazySingleton<T>(ObjectFactory<T> factory,
-      {String name, bool override});
+  LazySingletonBinding<T?> bindLazySingleton<T>(ObjectFactory<T> factory,
+      {String? name, bool? override});
 }

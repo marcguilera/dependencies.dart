@@ -7,7 +7,7 @@ abstract class Params {
   Optional<T> getOptional<T>(String name);
 
   /// Gets the value or throws.
-  T get<T>(String name);
+  T? get<T>(String name);
 
   /// Checks whether a value exists.
   bool contains(String name);
@@ -27,7 +27,7 @@ abstract class Params {
 
   /// Creates a [Param] instance from another.
   factory Params.fromParams(Params params) {
-    checkNotNull(params, message: () => "params can't be null");
+    ArgumentError.checkNotNull(params, "params can't be null");
     return (builder()..putParams(params)).build();
   }
 

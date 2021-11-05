@@ -60,7 +60,7 @@ void main() {
   });
 }
 
-Injector _newInjector([BindFunc func]) {
+Injector _newInjector([BindFunc? func]) {
   final builder = Injector.builder();
   if (func != null) func(builder);
   return builder.build();

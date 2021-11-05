@@ -10,14 +10,14 @@ abstract class InjectorRegistry implements Disposable {
   factory InjectorRegistry() => _InjectorRegistryContainer();
 
   /// Gets an injector from this [InjectorRegistry].
-  Injector get({String name});
+  Injector get({String? name});
 
   /// Registers the given [Injector] in this [InjectorRegistry].
-  void register(Injector injector, {bool override});
+  void register(Injector injector, {bool? override});
 
   /// Registers many the [Injector] instances in this [InjectorRegistry].
-  void registerAll(Iterable<Injector> injectors, {bool override});
+  void registerAll(Iterable<Injector> injectors, {bool? override});
 
   /// Checks whether this [InjectorRegistry] contains an [Injector] instance.
-  bool contains({String name});
+  bool contains({String? name});
 }

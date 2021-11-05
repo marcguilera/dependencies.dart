@@ -3,8 +3,8 @@ part of 'package:dependencies/dependencies.dart';
 class _BinderContainer extends _RegistrationContainer implements Binder {
   @override
   _FactoryRegistration<T> bindFactory<T>(ObjectFactory<T> factory,
-      {String name, bool override}) {
-    checkNotNull(factory, message: () => "Factory can't be null");
+      {String? name, bool? override}) {
+    ArgumentError.checkNotNull(factory, "Factory can't be null");
     final registration = _FactoryRegistration(factory, name);
     put(T, name, registration, override: override);
     return registration;
@@ -12,8 +12,8 @@ class _BinderContainer extends _RegistrationContainer implements Binder {
 
   @override
   _LazySingletonRegistration<T> bindLazySingleton<T>(ObjectFactory<T> factory,
-      {String name, bool override}) {
-    checkNotNull(factory, message: () => "Factory can't be null");
+      {String? name, bool? override}) {
+    ArgumentError.checkNotNull(factory, "Factory can't be null");
     final registration = _LazySingletonRegistration(factory, name);
     put(T, name, registration, override: override);
     return registration;
@@ -21,8 +21,8 @@ class _BinderContainer extends _RegistrationContainer implements Binder {
 
   @override
   _SingletonRegistration<T> bindSingleton<T>(T instance,
-      {String name, bool override}) {
-    checkNotNull(instance, message: () => "Singleton can't be null");
+      {String? name, bool? override}) {
+    ArgumentError.checkNotNull(instance, "Singleton can't be null");
     final registration = _SingletonRegistration(instance, name);
     put(T, name, registration, override: override);
     return registration;
@@ -30,7 +30,7 @@ class _BinderContainer extends _RegistrationContainer implements Binder {
 
   @override
   Iterable<_Registration> install(Configurer configurer) {
-    checkNotNull(configurer, message: () => "configurer can't be null");
+    ArgumentError.checkNotNull(configurer, "configurer can't be null");
 
     final binder = _ConfigurerBinderContainer(this);
 
